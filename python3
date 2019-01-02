@@ -1,0 +1,40 @@
+思路一：
+
+class Solution:
+    def isPalindrome(self, x):
+        """
+        :type x: int
+        :rtype: bool
+        """
+        if x<0:
+            return False
+        tmp = x
+        y = 0
+        while tmp:
+            y = y*10 + tmp%10
+            tmp = int(tmp/10)
+        return y == x
+        
+思路二：
+
+class Solution:
+    def isPalindrome(self, x):
+        """
+        :type x: int
+        :rtype: bool
+        """
+        if x<0:
+            return False
+        digit = 1
+        while x/digit>=10:
+            digit *=10
+        
+        while digit>1:
+            right=x%10
+            left=int(x/digit)
+            if right!=left:
+                return False
+            x = int((x%digit)/10)
+            digit /= 100
+        return True
+  
